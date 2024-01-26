@@ -1,0 +1,53 @@
+{
+  "name": "minibook-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/minibook-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/minibook-backend",
+        "main": "apps/minibook-backend/src/main.ts",
+        "tsConfig": "apps/minibook-backend/tsconfig.app.json",
+        "assets": ["apps/minibook-backend/src/assets"],
+        "webpackConfig": "apps/minibook-backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "minibook-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "minibook-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "minibook-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/minibook-backend/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

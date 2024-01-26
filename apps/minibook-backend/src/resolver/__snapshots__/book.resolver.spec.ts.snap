@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Book Resolver should create a book 1`] = `
+{
+  "createBook": {
+    "author": null,
+    "id": "9d2cec44-03e5-4ad8-a28e-f9d64d180b75",
+    "isbn": "978-3522202107",
+    "name": "Momo",
+  },
+}
+`;
+
+exports[`Book Resolver should return a book 1`] = `
+{
+  "book": {
+    "author": null,
+    "id": "ffed4244-9d34-4b64-9fc6-68ef6b7cc98a",
+    "isbn": "978-3522202107",
+    "name": "Ein buch",
+  },
+}
+`;
