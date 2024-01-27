@@ -1,0 +1,4 @@
+fragment BookComponent on Book {
+  isbn
+  name
+}

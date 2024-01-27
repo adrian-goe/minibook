@@ -8,7 +8,9 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && nx run-many -t lint -p minibook",
     "test": "nx affected:test",
-    "test-all": "nx run-many --all --target=test"
+    "test-all": "nx run-many --all --target=test",
+    "generate": "graphql-codegen",
+    "generate:watch": "graphql-codegen --watch"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +47,10 @@
     "@angular/cli": "~17.0.0",
     "@angular/compiler-cli": "~17.0.0",
     "@angular/language-service": "~17.0.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-apollo-angular": "^3.5.6",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
     "@nx/devkit": "17.2.8",
