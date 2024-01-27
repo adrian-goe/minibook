@@ -1,9 +1,11 @@
-<div class="card w-96 bg-base-100 shadow-xl">
+<div class="card w-full bg-base-100 shadow-xl">
   <!--  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>-->
   <div class="card-body">
-    <h2 class="card-title">Momo</h2>
+    <h2 class="card-title">{{ book.name }}</h2>
     <p>Michale Ende</p>
-    <p><span>ISBN 13</span><span>978-3522202107</span></p>
+    <p>
+      <span>ISBN 13</span><span>{{ book.isbn }}</span>
+    </p>
     <div class="card-actions justify-end">
       <button class="btn btn-primary">More Details</button>
     </div>

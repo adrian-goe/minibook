@@ -5,6 +5,11 @@ export const appRoutes: Route[] = [
     path: '',
     pathMatch: 'full',
     loadComponent: () =>
-      import('./nx-welcome.component').then((m) => m.NxWelcomeComponent),
+      import('./routes/books/books.component').then((m) => m.BooksComponent),
+  },
+
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];

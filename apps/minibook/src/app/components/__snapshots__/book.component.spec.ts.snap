@@ -2,10 +2,10 @@
 
 exports[`BookComponent should render basic card without input 1`] = `
 <div
-  id="root1"
+  id="root0"
 >
   <div
-    class="card w-96 bg-base-100 shadow-xl"
+    class="card w-full bg-base-100 shadow-xl"
   >
     <div
       class="card-body"
@@ -13,7 +13,7 @@ exports[`BookComponent should render basic card without input 1`] = `
       <h2
         class="card-title"
       >
-        Momo
+        test book name
       </h2>
       <p>
         Michale Ende

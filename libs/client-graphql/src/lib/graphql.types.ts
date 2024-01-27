@@ -73,6 +73,7 @@ export type Query = {
   __typename?: 'Query';
   author: Author;
   book: Book;
+  getBooks: Array<Book>;
 };
 
 export type GetBooksQueryVariables = Exact<{ [key: string]: never }>;
@@ -86,6 +87,13 @@ export type BookComponentFragment = {
   __typename?: 'Book';
   isbn: string;
   name: string;
+};
+
+export type BooksPageQueryVariables = Exact<{ [key: string]: never }>;
+
+export type BooksPageQuery = {
+  __typename?: 'Query';
+  getBooks: Array<{ __typename?: 'Book'; isbn: string; name: string }>;
 };
 
 export const BookComponentFragmentDoc = gql`
@@ -111,6 +119,28 @@ export class GetBooksGQL extends Apollo.Query<
   GetBooksQueryVariables
 > {
   override document = GetBooksDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const BooksPageDocument = gql`
+  query BooksPage {
+    getBooks {
+      ...BookComponent
+    }
+  }
+  ${BookComponentFragmentDoc}
+`;
+
+@Injectable({
+  providedIn: ClientGraphqlModule,
+})
+export class BooksPageGQL extends Apollo.Query<
+  BooksPageQuery,
+  BooksPageQueryVariables
+> {
+  override document = BooksPageDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);

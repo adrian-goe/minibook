@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BooksPageQuery } from '@minibook/client-graphql';
+
+type Book = BooksPageQuery['getBooks'][0];
 
 @Component({
   selector: 'minibook-book',
@@ -8,4 +11,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss',
 })
-export class BookComponent {}
+export class BookComponent {
+  @Input() book!: Book;
+}

@@ -1,0 +1,12 @@
+<ng-container *ngIf="booksLoading$ | async; else bookList">
+  LOADING
+</ng-container>
+<ng-template #bookList>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <minibook-book
+      class="flex-1"
+      *ngFor="let book of books$ | async"
+      [book]="book"
+    ></minibook-book>
+  </div>
+</ng-template>

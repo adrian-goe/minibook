@@ -12,6 +12,7 @@ describe('BookComponent', () => {
 
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+    component.book = { name: 'test book name', isbn: '978-3522202107' };
     fixture.detectChanges();
   });
 
