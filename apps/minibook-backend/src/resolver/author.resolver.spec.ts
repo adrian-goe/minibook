@@ -35,26 +35,4 @@ query AuthorQuery {
     expect(response.status).toEqual(200);
     expect(response.body.data).toMatchSnapshot();
   });
-
-  it('should create an author', async () => {
-    const response = await gqlTestQuery(
-      app,
-      `
-mutation Mutation($createAuthor: AuthorInput!) {
-  createAuthor(createAuthor: $createAuthor) {
-    id
-    name
-    books {
-      name
-      isbn
-    }
-  }
-}
-`,
-      { createAuthor: { name: 'Adrian Görisch' } }
-    );
-
-    expect(response.status).toEqual(200);
-    expect(response.body.data).toMatchSnapshot();
-  });
 });

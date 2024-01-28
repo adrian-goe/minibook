@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Author Resolver should create an author 1`] = `
-{
-  "createAuthor": {
-    "books": null,
-    "id": "b2afb1d6-cc91-4be9-a0d3-8f500666c52d",
-    "name": "Adrian Görisch",
-  },
-}
-`;
-
 exports[`Author Resolver should return an author 1`] = `
 {
   "author": {

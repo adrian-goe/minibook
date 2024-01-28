@@ -18,7 +18,7 @@ type Books = Array<BooksPageQuery['getBooks'][0]>;
   styleUrl: './books.component.scss',
 })
 export class BooksComponent {
-  private booksGQL = inject(BooksPageGQL);
+  constructor(private booksGQL: BooksPageGQL) {}
   query = this.booksGQL.watch({}, { useInitialLoading: true });
 
   books$: Observable<Books> = this.query.valueChanges.pipe(

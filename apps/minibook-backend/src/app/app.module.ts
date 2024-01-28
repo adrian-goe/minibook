@@ -5,20 +5,32 @@ import { join } from 'path';
 import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ResolverModule } from '../resolver/resolver.module';
+import { DatabaseModule } from '../database/database.module';
+import { ConfigurationModule } from '../configuration/configuration.module';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
+    ConfigurationModule,
+    DatabaseModule,
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'graphql/schema.gql'),
-      transformAutoSchemaFile: true,
-      sortSchema: true,
-      playground: false,
-      plugins: [
-        ApolloServerPluginLandingPageLocalDefault(),
-        ApolloServerPluginInlineTrace(),
-      ],
+      useFactory: () => {
+        return {
+          autoSchemaFile: join(process.cwd(), 'graphql/schema.gql'),
+          context: ({ req, res }) => ({ req, res }),
+          sortSchema: true,
+          transformAutoSchemaFile: true,
+          playground: false,
+          plugins: [
+            ApolloServerPluginLandingPageLocalDefault(),
+            ApolloServerPluginInlineTrace(),
+          ],
+        };
+      },
+      imports: [],
+      inject: [],
     }),
+
     ResolverModule,
   ],
   controllers: [],

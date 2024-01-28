@@ -2,7 +2,7 @@
 
 exports[`BookComponent should render basic card without input 1`] = `
 <div
-  id="root0"
+  id="root1"
 >
   <div
     class="card w-full bg-base-100 shadow-xl"
