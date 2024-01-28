@@ -34,7 +34,7 @@ query BookQuery {
     expect(response.body.data).toMatchSnapshot();
   });
 
-  xit('should create a book', async () => {
+  it('should create a book', async () => {
     const response = await gqlTestQuery(
       app,
       `
@@ -54,11 +54,45 @@ mutation Mutation($createBook: BookCreateInput!) {
         createBook: {
           name: 'Momo',
           isbn: '978-3522202107',
+          authorId: 'e0b48fde-7bbb-469e-848b-3aea659220b0',
         },
       }
     );
 
     expect(response.status).toEqual(200);
     expect(response.body.data).toMatchSnapshot();
+  });
+
+  it('should return author id validation error', async () => {
+    const response = await gqlTestQuery(
+      app,
+      `
+mutation Mutation($createBook: BookCreateInput!) {
+  createBook(createBook: $createBook) {
+    author {
+      name
+    }
+    isbn
+    name
+    id
+  }
+}
+`,
+
+      {
+        createBook: {
+          name: 'Momo',
+          isbn: '978-3522202107',
+          authorId: 'e0b48fde-7bbb-469e-848b',
+        },
+      }
+    );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.data).toBeNull();
+    expect(response.body.errors).toHaveLength(1);
+    expect(response.body.errors[0].message).toEqual(
+      'Validation Error: Invalid uuid'
+    );
   });
 });

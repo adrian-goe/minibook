@@ -47,6 +47,7 @@ export type Book = {
 };
 
 export type BookCreateInput = {
+  authorId: Scalars['String']['input'];
   isbn: Scalars['String']['input'];
   name: Scalars['String']['input'];
 };
@@ -63,29 +64,27 @@ export type MutationCreateBookArgs = {
 export type Query = {
   __typename?: 'Query';
   author: Author;
-  book: Book;
   getAuthors: Array<Author>;
   getBooks: Array<Book>;
-};
-
-export type GetBooksQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetBooksQuery = {
-  __typename?: 'Query';
-  book: { __typename?: 'Book'; isbn: string; name: string };
 };
 
 export type BookComponentFragment = {
   __typename?: 'Book';
   isbn: string;
   name: string;
+  author?: { __typename?: 'Author'; name: string } | null;
 };
 
 export type BooksPageQueryVariables = Exact<{ [key: string]: never }>;
 
 export type BooksPageQuery = {
   __typename?: 'Query';
-  getBooks: Array<{ __typename?: 'Book'; isbn: string; name: string }>;
+  getBooks: Array<{
+    __typename?: 'Book';
+    isbn: string;
+    name: string;
+    author?: { __typename?: 'Author'; name: string } | null;
+  }>;
 };
 
 export type GetAuthorsQueryVariables = Exact<{ [key: string]: never }>;
@@ -95,34 +94,30 @@ export type GetAuthorsQuery = {
   getAuthors: Array<{ __typename?: 'Author'; id: string; name: string }>;
 };
 
+export type CreateBookMutationVariables = Exact<{
+  createBook: BookCreateInput;
+}>;
+
+export type CreateBookMutation = {
+  __typename?: 'Mutation';
+  createBook: {
+    __typename?: 'Book';
+    isbn: string;
+    name: string;
+    id: string;
+    author?: { __typename?: 'Author'; name: string } | null;
+  };
+};
+
 export const BookComponentFragmentDoc = gql`
   fragment BookComponent on Book {
     isbn
     name
-  }
-`;
-export const GetBooksDocument = gql`
-  query GetBooks {
-    book {
-      ...BookComponent
+    author {
+      name
     }
   }
-  ${BookComponentFragmentDoc}
 `;
-
-@Injectable({
-  providedIn: ClientGraphqlModule,
-})
-export class GetBooksGQL extends Apollo.Query<
-  GetBooksQuery,
-  GetBooksQueryVariables
-> {
-  override document = GetBooksDocument;
-
-  constructor(apollo: Apollo.Apollo) {
-    super(apollo);
-  }
-}
 export const BooksPageDocument = gql`
   query BooksPage {
     getBooks {
@@ -162,6 +157,32 @@ export class GetAuthorsGQL extends Apollo.Query<
   GetAuthorsQueryVariables
 > {
   override document = GetAuthorsDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const CreateBookDocument = gql`
+  mutation CreateBook($createBook: BookCreateInput!) {
+    createBook(createBook: $createBook) {
+      author {
+        name
+      }
+      isbn
+      name
+      id
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: ClientGraphqlModule,
+})
+export class CreateBookGQL extends Apollo.Mutation<
+  CreateBookMutation,
+  CreateBookMutationVariables
+> {
+  override document = CreateBookDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);

@@ -9,11 +9,13 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
+  BookCreateInput,
   ClientGraphqlModule,
+  CreateBookGQL,
   GetAuthorsGQL,
   GetAuthorsQuery,
 } from '@minibook/client-graphql';
-import { filter, map, Observable, startWith } from 'rxjs';
+import { filter, map, Observable, Subject } from 'rxjs';
 import { isbn13Validator } from '../../utils/isbn.validator';
 
 type Authors = Array<GetAuthorsQuery['getAuthors'][0]>;
@@ -32,8 +34,11 @@ type Authors = Array<GetAuthorsQuery['getAuthors'][0]>;
 })
 export class CreateBookComponent {
   private router = inject(Router);
-
   private booksGQL = inject(GetAuthorsGQL);
+  private createBookGQL = inject(CreateBookGQL);
+
+  submissionError = '';
+
   query = this.booksGQL.watch({}, { useInitialLoading: true });
 
   authors$: Observable<Authors> = this.query.valueChanges.pipe(
@@ -41,10 +46,7 @@ export class CreateBookComponent {
     map((result) => result.data.getAuthors)
   );
 
-  authorsLoading$: Observable<boolean> = this.query.valueChanges.pipe(
-    startWith({ loading: true }),
-    map(({ loading }) => loading)
-  );
+  createRideInput$ = new Subject<BookCreateInput>();
 
   form = new FormGroup(
     {
@@ -67,15 +69,30 @@ export class CreateBookComponent {
       return;
     }
 
-    try {
-      console.log({
-        bookName,
-        bookIsbn: bookIsbn.replace(/[^0-9X]/gi, ''),
-        bookAuthor,
+    this.createBookGQL
+      .mutate(
+        {
+          createBook: {
+            authorId: bookAuthor,
+            isbn: bookIsbn.replace(/[^0-9X]/gi, ''),
+            name: bookName,
+          },
+        },
+        { useMutationLoading: true }
+      )
+      .subscribe({
+        next: (result) => {
+          if (result.data?.createBook.id) {
+            this.router.navigate(['/']);
+          }
+        },
+        error: (error) => {
+          this.submissionError = new Error(error).message.includes(
+            'book_isbn_key'
+          )
+            ? 'The isbn already exist'
+            : 'There is an unknown error';
+        },
       });
-      await this.router.navigate(['/']);
-    } catch (error: any) {
-      console.error(error);
-    }
   }
 }

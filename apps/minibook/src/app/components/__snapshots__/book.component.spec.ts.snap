@@ -2,11 +2,17 @@
 
 exports[`BookComponent should render basic card without input 1`] = `
 <div
-  id="root1"
+  id="root0"
 >
   <div
     class="card w-full bg-base-100 shadow-xl"
   >
+    <figure>
+      <img
+        alt="Shoes"
+        src="https://picsum.photos/seed/978-3522202107/600/300"
+      />
+    </figure>
     <div
       class="card-body"
     >
@@ -16,7 +22,7 @@ exports[`BookComponent should render basic card without input 1`] = `
         test book name
       </h2>
       <p>
-        Michale Ende
+        
       </p>
       <p>
         <span>

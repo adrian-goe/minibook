@@ -15,8 +15,8 @@ export class BookEntity {
   @Column()
   name: string;
 
-  @Column({ type: 'int', nullable: false })
-  isbn: number;
+  @Column({ nullable: false })
+  isbn: string;
 
   @ManyToOne(() => AuthorEntity, (author) => author.id, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'author_id' })

@@ -1,5 +1,0 @@
-query GetBooks {
-  book {
-    ...BookComponent
-  }
-}

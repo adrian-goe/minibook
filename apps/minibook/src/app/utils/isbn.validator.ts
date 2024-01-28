@@ -3,9 +3,8 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 export function isbn13Validator(controlName: string): ValidatorFn {
   return (control: AbstractControl) => {
     const isbn: string = control?.value[controlName]?.replace(/[^0-9X]/gi, '');
-
     if (!isbn) {
-      return null;
+      return { isbn13: false };
     }
 
     let sum = 0;
@@ -17,7 +16,6 @@ export function isbn13Validator(controlName: string): ValidatorFn {
     if (+isbn[12] !== (10 - (sum % 10)) % 10) {
       return { isbn13: true };
     }
-
-    return null;
+    return { isbn13: false };
   };
 }

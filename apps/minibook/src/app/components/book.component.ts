@@ -13,4 +13,8 @@ type Book = BooksPageQuery['getBooks'][0];
 })
 export class BookComponent {
   @Input() book!: Book;
+
+  getimageurl() {
+    return `https://picsum.photos/seed/${this.book.isbn}/600/300`;
+  }
 }

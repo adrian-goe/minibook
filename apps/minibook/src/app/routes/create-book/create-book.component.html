@@ -15,8 +15,8 @@
       formControlName="bookName"
     />
     <p
-      *ngIf="form.controls.bookName.dirty && form.controls.bookName.errors?.['required']"
-      class="text-xs mt-2 text-danger"
+      *ngIf="form.controls.bookName.errors?.['required']"
+      class="text-xs mt-2 text-error"
     >
       A book name is required.
     </p>
@@ -32,15 +32,12 @@
       formControlName="bookIsbn"
     />
     <p
-      *ngIf="form.controls.bookIsbn.dirty && form.controls.bookIsbn.errors?.['required']"
-      class="text-xs mt-2 text-danger"
+      *ngIf="form.controls.bookIsbn.errors?.['required']"
+      class="text-xs mt-2 text-error"
     >
       A ISBN-13 is required.
     </p>
-    <p
-      *ngIf="form.controls.bookIsbn.dirty && form.controls.bookIsbn.dirty && form.errors?.['isbn13']"
-      class="text-xs mt-2 text-danger"
-    >
+    <p *ngIf="  form.errors?.['isbn13']" class="text-xs mt-2 text-error">
       Is not a valid ISBN-13.
     </p>
   </label>
@@ -57,7 +54,16 @@
       </option>
     </select>
   </label>
-  <button type="submit" class="btn btn-primary w-full max-w-xs mt-4">
+  <button
+    type="submit"
+    [disabled]="!form.valid"
+    class="btn btn-primary w-full max-w-xs mt-4"
+  >
     Add Book
   </button>
+  <p *ngIf="submissionError" class="text-xs mt-2 text-error">
+    {{ submissionError }}
+  </p>
+
+  <p class="text-xs mt-4">example ISBN-13: <span>978-3608938180</span></p>
 </form>

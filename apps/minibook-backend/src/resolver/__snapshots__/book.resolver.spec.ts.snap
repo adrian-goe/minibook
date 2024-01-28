@@ -1,86 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Book Resolver should create a book 1`] = `
+{
+  "createBook": {
+    "author": {
+      "name": "William Brown",
+    },
+    "id": "b23fe6e3-4870-49a0-be21-6ce15c2452c2",
+    "isbn": "978-3522202107",
+    "name": "Momo",
+  },
+}
+`;
+
 exports[`Book Resolver should return with books 1`] = `
 {
   "getBooks": [
     {
       "author": {
+        "name": "William Brown",
+      },
+      "id": "d5efb0ba-5523-49b5-abd7-30a4dbc2ecf0",
+      "isbn": "9783742321398",
+      "name": "1 test name chromium",
+    },
+    {
+      "author": {
+        "name": "William Brown",
+      },
+      "id": "fdad7cbf-6e25-4d87-b4c1-e2453c02a035",
+      "isbn": "9783830335658",
+      "name": "1 test name firefox",
+    },
+    {
+      "author": {
+        "name": "William Brown",
+      },
+      "id": "04ad47cb-7a4d-4178-b456-5c0d9165be1c",
+      "isbn": "9783959616461",
+      "name": "1 test name webkit",
+    },
+    {
+      "author": {
         "name": "John Smith",
       },
       "id": "5291a7fc-d663-40d6-935a-38b52d697fe3",
-      "isbn": 123456789,
+      "isbn": "123456789",
       "name": "Book Title 1",
-    },
-    {
-      "author": {
-        "name": "Jane Doe",
-      },
-      "id": "e2961f44-9b67-4eb5-8924-0bc047647317",
-      "isbn": 987654321,
-      "name": "Book Title 2",
-    },
-    {
-      "author": {
-        "name": "William Brown",
-      },
-      "id": "f3e92efe-d784-4dce-bd4e-09e105239e75",
-      "isbn": 159753486,
-      "name": "Book Title 3",
-    },
-    {
-      "author": {
-        "name": "John Smith",
-      },
-      "id": "ca3a92b0-d386-4c26-8715-726a884f6b59",
-      "isbn": 159753486,
-      "name": "Book Title 4",
-    },
-    {
-      "author": {
-        "name": "Jane Doe",
-      },
-      "id": "0067b91f-d513-4877-b1e5-c7d9217ba993",
-      "isbn": 159753486,
-      "name": "Book Title 5",
-    },
-    {
-      "author": {
-        "name": "William Brown",
-      },
-      "id": "d0c347bc-1545-4f38-bf82-e71a05b429c4",
-      "isbn": 159753486,
-      "name": "Book Title 6",
-    },
-    {
-      "author": {
-        "name": "John Smith",
-      },
-      "id": "57443459-d95d-4911-b2df-7bcfc3f0c7f0",
-      "isbn": 159753486,
-      "name": "Book Title 7",
-    },
-    {
-      "author": {
-        "name": "Jane Doe",
-      },
-      "id": "5e0ddd47-abdf-4c75-9174-2dfdbbbfb29d",
-      "isbn": 159753486,
-      "name": "Book Title 8",
-    },
-    {
-      "author": {
-        "name": "William Brown",
-      },
-      "id": "340f0fcb-ca7f-4037-98b3-7f4bfea2eb08",
-      "isbn": 159753486,
-      "name": "Book Title 9",
     },
     {
       "author": {
         "name": "John Smith",
       },
       "id": "ce9a57b4-3e9d-41b3-b306-3d2140b2874a",
-      "isbn": 159753486,
+      "isbn": "123456798",
       "name": "Book Title 10",
     },
     {
@@ -88,7 +61,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "3e58038e-fcd3-4125-b036-392762547d4e",
-      "isbn": 159753486,
+      "isbn": "123456799",
       "name": "Book Title 11",
     },
     {
@@ -96,7 +69,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "dc24b466-9083-4159-b094-5d3eb25bfad7",
-      "isbn": 159753486,
+      "isbn": "123456800",
       "name": "Book Title 12",
     },
     {
@@ -104,7 +77,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "2dbbe6d9-95cb-427d-b28a-ab5f4f6c8f50",
-      "isbn": 159753486,
+      "isbn": "123456801",
       "name": "Book Title 13",
     },
     {
@@ -112,7 +85,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "b7e46666-2385-41a3-8899-7740cc3ab7b1",
-      "isbn": 159753486,
+      "isbn": "123456802",
       "name": "Book Title 14",
     },
     {
@@ -120,7 +93,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "32e156fb-9e26-4b03-83a3-9697ad1f3897",
-      "isbn": 159753486,
+      "isbn": "123456803",
       "name": "Book Title 15",
     },
     {
@@ -128,7 +101,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "dd00daa7-1afc-416f-a4f3-5dbf22852e43",
-      "isbn": 159753486,
+      "isbn": "123456804",
       "name": "Book Title 16",
     },
     {
@@ -136,7 +109,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "85d8380d-e7ae-483a-9850-d51ad1882d9e",
-      "isbn": 159753486,
+      "isbn": "123456805",
       "name": "Book Title 17",
     },
     {
@@ -144,7 +117,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "7f040fa8-f690-4138-ac46-ab1e244f87bd",
-      "isbn": 159753486,
+      "isbn": "123456806",
       "name": "Book Title 18",
     },
     {
@@ -152,15 +125,23 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "9ec83d45-532f-4f10-8b87-eac8192805e8",
-      "isbn": 159753486,
+      "isbn": "123456807",
       "name": "Book Title 19",
     },
     {
       "author": {
         "name": "Jane Doe",
       },
+      "id": "e2961f44-9b67-4eb5-8924-0bc047647317",
+      "isbn": "123456790",
+      "name": "Book Title 2",
+    },
+    {
+      "author": {
+        "name": "Jane Doe",
+      },
       "id": "f5116dff-528c-41d2-917c-96ca2f32bf2f",
-      "isbn": 159753486,
+      "isbn": "123456808",
       "name": "Book Title 20",
     },
     {
@@ -168,7 +149,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "16fbcf5b-05c5-4c0c-ac1b-8563e8623313",
-      "isbn": 159753486,
+      "isbn": "123456809",
       "name": "Book Title 21",
     },
     {
@@ -176,7 +157,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "14b7db0a-ec3b-460e-ab97-f94eb2ec6233",
-      "isbn": 159753486,
+      "isbn": "123456810",
       "name": "Book Title 22",
     },
     {
@@ -184,7 +165,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "a28c4b71-6f86-40a7-85ac-3d4c1454c07b",
-      "isbn": 159753486,
+      "isbn": "123456811",
       "name": "Book Title 23",
     },
     {
@@ -192,7 +173,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "0c163fef-88dd-4685-b1c8-9fcd589c78ed",
-      "isbn": 159753486,
+      "isbn": "123456812",
       "name": "Book Title 24",
     },
     {
@@ -200,7 +181,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "ac908521-af52-4eba-9fc0-b8746b5f7522",
-      "isbn": 159753486,
+      "isbn": "123456813",
       "name": "Book Title 25",
     },
     {
@@ -208,7 +189,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "33c4d945-9758-4275-a938-5bb2027f58c6",
-      "isbn": 159753486,
+      "isbn": "123456814",
       "name": "Book Title 26",
     },
     {
@@ -216,7 +197,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "befb14c9-c91a-47d4-8a6e-220ee6debc5f",
-      "isbn": 159753486,
+      "isbn": "123456815",
       "name": "Book Title 27",
     },
     {
@@ -224,7 +205,7 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "John Smith",
       },
       "id": "e3843410-2a7b-4591-83de-3fbe6dd1e641",
-      "isbn": 159753486,
+      "isbn": "123456816",
       "name": "Book Title 28",
     },
     {
@@ -232,15 +213,23 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "Jane Doe",
       },
       "id": "55ada36a-65d0-4d0c-9c26-e79b7368d4b0",
-      "isbn": 159753486,
+      "isbn": "123456817",
       "name": "Book Title 29",
     },
     {
       "author": {
         "name": "William Brown",
       },
+      "id": "f3e92efe-d784-4dce-bd4e-09e105239e75",
+      "isbn": "123456791",
+      "name": "Book Title 3",
+    },
+    {
+      "author": {
+        "name": "William Brown",
+      },
       "id": "30d3094f-5092-41c9-b64c-cbfdf92df7d1",
-      "isbn": 159753486,
+      "isbn": "123456818",
       "name": "Book Title 30",
     },
     {
@@ -248,8 +237,56 @@ exports[`Book Resolver should return with books 1`] = `
         "name": "William Brown",
       },
       "id": "513ee25e-608e-41dc-8274-12b6276b383b",
-      "isbn": 159753486,
+      "isbn": "123456819",
       "name": "Book Title 31",
+    },
+    {
+      "author": {
+        "name": "John Smith",
+      },
+      "id": "ca3a92b0-d386-4c26-8715-726a884f6b59",
+      "isbn": "123456792",
+      "name": "Book Title 4",
+    },
+    {
+      "author": {
+        "name": "Jane Doe",
+      },
+      "id": "0067b91f-d513-4877-b1e5-c7d9217ba993",
+      "isbn": "123456793",
+      "name": "Book Title 5",
+    },
+    {
+      "author": {
+        "name": "William Brown",
+      },
+      "id": "d0c347bc-1545-4f38-bf82-e71a05b429c4",
+      "isbn": "123456794",
+      "name": "Book Title 6",
+    },
+    {
+      "author": {
+        "name": "John Smith",
+      },
+      "id": "57443459-d95d-4911-b2df-7bcfc3f0c7f0",
+      "isbn": "123456795",
+      "name": "Book Title 7",
+    },
+    {
+      "author": {
+        "name": "Jane Doe",
+      },
+      "id": "5e0ddd47-abdf-4c75-9174-2dfdbbbfb29d",
+      "isbn": "123456796",
+      "name": "Book Title 8",
+    },
+    {
+      "author": {
+        "name": "William Brown",
+      },
+      "id": "340f0fcb-ca7f-4037-98b3-7f4bfea2eb08",
+      "isbn": "123456797",
+      "name": "Book Title 9",
     },
   ],
 }

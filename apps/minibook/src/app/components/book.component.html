@@ -1,8 +1,8 @@
 <div class="card w-full bg-base-100 shadow-xl">
-  <!--  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>-->
+  <figure><img [src]="getimageurl()" alt="Shoes" /></figure>
   <div class="card-body">
     <h2 class="card-title">{{ book.name }}</h2>
-    <p>Michale Ende</p>
+    <p>{{ book.author?.name }}</p>
     <p>
       <span>ISBN 13</span><span>{{ book.isbn }}</span>
     </p>

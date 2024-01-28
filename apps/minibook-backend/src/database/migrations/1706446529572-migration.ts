@@ -13,7 +13,7 @@ export class Migration1706446529572 implements MigrationInterface {
       (
         id        UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         name      TEXT NOT NULL,
-        isbn      INT,
+        isbn      TEXT UNIQUE,
         author_id UUID NOT NULL REFERENCES author (id) ON DELETE CASCADE
       );
     `);

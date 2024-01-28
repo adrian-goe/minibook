@@ -1,4 +1,7 @@
 fragment BookComponent on Book {
   isbn
   name
+  author {
+    name
+  }
 }

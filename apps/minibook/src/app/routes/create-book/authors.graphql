@@ -4,3 +4,14 @@ query GetAuthors {
     name
   }
 }
+
+mutation CreateBook($createBook: BookCreateInput!) {
+  createBook(createBook: $createBook) {
+    author {
+      name
+    }
+    isbn
+    name
+    id
+  }
+}

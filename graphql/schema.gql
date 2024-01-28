@@ -11,8 +11,18 @@ type Author {
 type Book {
   author: Author
   id: String!
-  isbn: Float!
+  isbn: String!
   name: String!
+}
+
+input BookCreateInput {
+  authorId: String!
+  isbn: String!
+  name: String!
+}
+
+type Mutation {
+  createBook(createBook: BookCreateInput!): Book!
 }
 
 type Query {
