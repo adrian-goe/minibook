@@ -7,7 +7,6 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { ResolverModule } from '../resolver/resolver.module';
 import { DatabaseModule } from '../database/database.module';
 import { ConfigurationModule } from '../configuration/configuration.module';
-import { JoiPipeModule } from 'nestjs-joi';
 
 @Module({
   imports: [
@@ -30,9 +29,6 @@ import { JoiPipeModule } from 'nestjs-joi';
       },
       imports: [],
       inject: [],
-    }),
-    JoiPipeModule.forRoot({
-      pipeOpts: { defaultValidationOptions: { stripUnknown: true } },
     }),
 
     ResolverModule,
