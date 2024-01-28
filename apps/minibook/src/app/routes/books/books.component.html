@@ -9,4 +9,11 @@
       [book]="book"
     ></minibook-book>
   </div>
+
+  <div class="join grid grid-cols-2 w-2/6 mt-10 mx-auto">
+    <button (click)="prev()" class="join-item btn btn-outline">
+      Previous page
+    </button>
+    <button (click)="next()" class="join-item btn btn-outline">Next</button>
+  </div>
 </ng-template>

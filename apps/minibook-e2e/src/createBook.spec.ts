@@ -34,8 +34,6 @@ test('create Book', async ({ page, browserName }) => {
 
   expect(page.url()).toBe('http://localhost:4200/');
 
-  const cardWithBook = await page.waitForSelector(`h2:text("${bookName}")`, {
-    timeout: 60000,
-  });
+  const cardWithBook = await page.waitForSelector(`h2:text("${bookName}")`);
   expect(cardWithBook).toBeTruthy();
 });

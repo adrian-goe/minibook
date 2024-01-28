@@ -1,5 +1,5 @@
-query BooksPage {
-  getBooks {
+query BooksPage($limit: Int!, $offset: Int!) {
+  getBooks(limit: $limit, offset: $offset) {
     ...BookComponent
   }
 }

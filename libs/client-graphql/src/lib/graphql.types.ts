@@ -1,7 +1,8 @@
+import * as Apollo from 'apollo-angular';
 import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
-import * as Apollo from 'apollo-angular';
 import { ClientGraphqlModule } from './client-graphql.module';
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -68,6 +69,11 @@ export type Query = {
   getBooks: Array<Book>;
 };
 
+export type QueryGetBooksArgs = {
+  limit: Scalars['Int']['input'];
+  offset: Scalars['Int']['input'];
+};
+
 export type BookComponentFragment = {
   __typename?: 'Book';
   isbn: string;
@@ -75,7 +81,10 @@ export type BookComponentFragment = {
   author?: { __typename?: 'Author'; name: string } | null;
 };
 
-export type BooksPageQueryVariables = Exact<{ [key: string]: never }>;
+export type BooksPageQueryVariables = Exact<{
+  limit: Scalars['Int']['input'];
+  offset: Scalars['Int']['input'];
+}>;
 
 export type BooksPageQuery = {
   __typename?: 'Query';
@@ -119,8 +128,8 @@ export const BookComponentFragmentDoc = gql`
   }
 `;
 export const BooksPageDocument = gql`
-  query BooksPage {
-    getBooks {
+  query BooksPage($limit: Int!, $offset: Int!) {
+    getBooks(limit: $limit, offset: $offset) {
       ...BookComponent
     }
   }

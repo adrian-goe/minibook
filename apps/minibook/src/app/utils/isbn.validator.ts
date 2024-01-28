@@ -4,7 +4,7 @@ export function isbn13Validator(controlName: string): ValidatorFn {
   return (control: AbstractControl) => {
     const isbn: string = control?.value[controlName]?.replace(/[^0-9X]/gi, '');
     if (!isbn) {
-      return { isbn13: false };
+      return null;
     }
 
     let sum = 0;
@@ -16,6 +16,6 @@ export function isbn13Validator(controlName: string): ValidatorFn {
     if (+isbn[12] !== (10 - (sum % 10)) % 10) {
       return { isbn13: true };
     }
-    return { isbn13: false };
+    return null;
   };
 }

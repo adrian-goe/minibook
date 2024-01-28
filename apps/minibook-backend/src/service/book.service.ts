@@ -14,11 +14,17 @@ export class BookService {
     private readonly authorService: AuthorService
   ) {}
 
-  getAllBooks() {
-    return this.bookEntityRepository.find({
-      relations: ['author'],
-      order: { name: 'asc' },
-    });
+  async getAllBooks(limit: number, offset: number) {
+    return await this.bookEntityRepository
+      .createQueryBuilder('book')
+      .skip(offset)
+      .take(limit)
+      .orderBy({
+        'book.name': 'ASC',
+        'book.isbn': 'ASC',
+      })
+      .leftJoinAndSelect('book.author', 'author')
+      .getMany();
   }
 
   async createBook(bookData: BookCreateInput) {

@@ -17,8 +17,8 @@ describe('Book Resolver', function () {
     const response = await gqlTestQuery(
       app,
       `
-query BookQuery {
-  getBooks {
+query BookQuery($limit: Int!, $offset: Int!){
+  getBooks(limit: $limit, offset: $offset) {
     id
     isbn
     name
@@ -27,7 +27,8 @@ query BookQuery {
     }
   }
 }
-`
+`,
+      { offset: 0, limit: 10 }
     );
 
     expect(response.status).toEqual(200);

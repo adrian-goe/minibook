@@ -1,5 +1,5 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Book, BookCreateInput, BOOK_SCHEMA } from './gql-type/book.type';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Book, BOOK_SCHEMA, BookCreateInput } from './gql-type/book.type';
 import { BookService } from '../service/book.service';
 import { z } from 'zod';
 import { UserInputError } from '@nestjs/apollo';
@@ -8,11 +8,15 @@ import { Logger } from '@nestjs/common';
 @Resolver('Book')
 export class BookResolver {
   private readonly logger = new Logger(BookResolver.name);
+
   constructor(private readonly bookService: BookService) {}
 
   @Query(() => [Book])
-  async getBooks(): Promise<Array<Book>> {
-    return this.bookService.getAllBooks();
+  async getBooks(
+    @Args('offset', { type: () => Int }) offset: number,
+    @Args('limit', { type: () => Int }) limit: number
+  ): Promise<Array<Book>> {
+    return await this.bookService.getAllBooks(limit, offset);
   }
 
   @Mutation(() => Book)
