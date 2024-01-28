@@ -7,7 +7,14 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./routes/books/books.component').then((m) => m.BooksComponent),
   },
-
+  {
+    path: 'create-book',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./routes/create-book/create-book.component').then(
+        (m) => m.CreateBookComponent
+      ),
+  },
   {
     path: '**',
     redirectTo: '',

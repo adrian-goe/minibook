@@ -38,10 +38,6 @@ export type Author = {
   name: Scalars['String']['output'];
 };
 
-export type AuthorInput = {
-  name: Scalars['String']['input'];
-};
-
 export type Book = {
   __typename?: 'Book';
   author?: Maybe<Author>;
@@ -57,12 +53,7 @@ export type BookCreateInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createAuthor: Author;
   createBook: Book;
-};
-
-export type MutationCreateAuthorArgs = {
-  createAuthor: AuthorInput;
 };
 
 export type MutationCreateBookArgs = {
@@ -73,6 +64,7 @@ export type Query = {
   __typename?: 'Query';
   author: Author;
   book: Book;
+  getAuthors: Array<Author>;
   getBooks: Array<Book>;
 };
 
@@ -94,6 +86,13 @@ export type BooksPageQueryVariables = Exact<{ [key: string]: never }>;
 export type BooksPageQuery = {
   __typename?: 'Query';
   getBooks: Array<{ __typename?: 'Book'; isbn: string; name: string }>;
+};
+
+export type GetAuthorsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetAuthorsQuery = {
+  __typename?: 'Query';
+  getAuthors: Array<{ __typename?: 'Author'; id: string; name: string }>;
 };
 
 export const BookComponentFragmentDoc = gql`
@@ -141,6 +140,28 @@ export class BooksPageGQL extends Apollo.Query<
   BooksPageQueryVariables
 > {
   override document = BooksPageDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const GetAuthorsDocument = gql`
+  query GetAuthors {
+    getAuthors {
+      id
+      name
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: ClientGraphqlModule,
+})
+export class GetAuthorsGQL extends Apollo.Query<
+  GetAuthorsQuery,
+  GetAuthorsQueryVariables
+> {
+  override document = GetAuthorsDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);

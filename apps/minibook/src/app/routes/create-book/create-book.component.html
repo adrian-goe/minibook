@@ -1,0 +1,63 @@
+<form
+  [formGroup]="form"
+  (submit)="onSubmit()"
+  class="min-h-screen p-8 flex flex-col flex-nowrap max-w-xl mx-auto md:justify-center"
+>
+  <h1 class="text-3xl font-bold mb-4">Add new Book</h1>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Book Name</span>
+    </div>
+    <input
+      type="text"
+      placeholder="Book Name"
+      class="input input-bordered w-full max-w-xs"
+      formControlName="bookName"
+    />
+    <p
+      *ngIf="form.controls.bookName.dirty && form.controls.bookName.errors?.['required']"
+      class="text-xs mt-2 text-danger"
+    >
+      A book name is required.
+    </p>
+  </label>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">ISBN-13</span>
+    </div>
+    <input
+      type="text"
+      placeholder="ISBN-13"
+      class="input input-bordered w-full max-w-xs"
+      formControlName="bookIsbn"
+    />
+    <p
+      *ngIf="form.controls.bookIsbn.dirty && form.controls.bookIsbn.errors?.['required']"
+      class="text-xs mt-2 text-danger"
+    >
+      A ISBN-13 is required.
+    </p>
+    <p
+      *ngIf="form.controls.bookIsbn.dirty && form.controls.bookIsbn.dirty && form.errors?.['isbn13']"
+      class="text-xs mt-2 text-danger"
+    >
+      Is not a valid ISBN-13.
+    </p>
+  </label>
+  <label class="form-control w-full max-w-xs">
+    <div class="label">
+      <span class="label-text">Author</span>
+    </div>
+    <select
+      class="select w-full max-w-xs select-bordered"
+      formControlName="bookAuthor"
+    >
+      <option *ngFor="let author of authors$ | async" [value]="author.id">
+        {{ author.name }}
+      </option>
+    </select>
+  </label>
+  <button type="submit" class="btn btn-primary w-full max-w-xs mt-4">
+    Add Book
+  </button>
+</form>

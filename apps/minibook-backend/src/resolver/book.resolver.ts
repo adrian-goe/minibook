@@ -20,17 +20,17 @@ export class BookResolver {
       {
         id: 'ffed4244-9d34-4b64-9fc6-68ef6b7cc98a',
         name: 'Ein buch 0',
-        isbn: '978-3522202107',
+        isbn: '9783522202107',
       },
       {
         id: '05a704d9-475b-44ee-95a1-c977fb5a6ca6',
         name: 'Ein buch 1',
-        isbn: '978-3522202107',
+        isbn: '9783522202107',
       },
       {
         id: '06c575d7-5c72-4801-9527-c551934c5a09',
         name: 'Ein buch 2',
-        isbn: '978-3522202107',
+        isbn: '9783522202107',
       },
     ];
   }
